@@ -4,6 +4,8 @@
 #include <math.h>
 #include <string.h>
 
+int achouPalavra = 0;
+
 pNodoA* cria_arvore(void)
 {
     return NULL;
@@ -76,7 +78,7 @@ int MaiorFator(pNodoA *a, int contador)
 
 pNodoA* OrdenaDic (char *argv[], pNodoA* a)
 {
-    char linha[1000];
+char linha[1000];
     char separador[]= {" ,.&*%\?!;/'@\"$#=><()][}{:\n\t"};
     FILE *dicionario;
     char *palavra, *lema;
@@ -96,5 +98,21 @@ pNodoA* OrdenaDic (char *argv[], pNodoA* a)
         }
     }
 
+    fclose(dicionario);
     return a;
 }
+
+void procuraPalavra(pNodoA *a, char p[], char *lema)
+{
+    if (a!= NULL && achouPalavra != 1)
+    {
+        if(strcmp(a->palavra, p) == 0){
+            achouPalavra = 1;
+            strcpy(lema, a->lema);
+        }
+
+        procuraPalavra(a->esq, p, lema);
+        procuraPalavra(a->dir, p, lema);
+    }
+}
+
