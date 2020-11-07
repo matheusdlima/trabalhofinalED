@@ -6,10 +6,11 @@ struct TNodoA{
 };
 typedef struct TNodoA pNodoA;
 
-
 pNodoA* cria_arvore(void);
 pNodoA* InsereArvore(pNodoA *a, char palavra[], char lema[]);
 int Altura (pNodoA *a);
 int FatorNodo(pNodoA *a);
 int MaiorFator(pNodoA *a, int contador);
 pNodoA* OrdenaDic (char *argv[], pNodoA* a);
+void procuraPalavra(pNodoA *a, char palavra[], char *lema);
+
